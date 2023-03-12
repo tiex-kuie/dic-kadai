@@ -1,0 +1,31 @@
+# 紙折問題
+
+# 今回の課題：1枚の紙（厚さ：0.00008m）を43回折り曲げた時の厚さを計算するプログラムの作成
+
+# 必要なライブラリのインポート
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+# THICKNESSを最初の紙の厚さとする。
+THICKNESS = 0.00008
+
+# n_foldedを紙を折る回数とする。
+n_folded = 43
+
+# folded_thickness_listを紙を0,1,2...回数のリストとする。
+folded_thickness_list = [THICKNESS]
+
+for i in range(n_folded):
+    folded_thickness_list.append(folded_thickness_list[-1]*2)
+
+print("厚さ： {}メートル".format(folded_thickness_list[-1])) 
+print("------")
+print("リスト")
+print(folded_thickness_list)
+
+# 折った回数に対する紙の厚さのグラフを表示
+plt.title("thickness of folded paper")
+plt.xlabel("number of folds")
+plt.ylabel("thickness[m]")
+plt.plot(folded_thickness_list , marker='o') 
+plt.show()
